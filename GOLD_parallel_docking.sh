@@ -5,10 +5,12 @@
 
 ### Assign variables ###
 START_FILE="monomer_ambinter"
-SPLIT_NUMBER=10
-NUM_FOLDERS=9
+SPLIT_NUMBER=10 					#Amount of compounds on each core
+NUM_FOLDERS=9						#Amount of cores being used
 GOLD_CONF_DIR="/home/wout/test"
 GOLD_AUTO="/opt/CCDC/Discovery_2022/bin/gold_auto"
+
+### Variables that do not need to be changed ###
 GOLD_CONF_IN="${START_FILE}.sdf"
 MOL2_OUT="${START_FILE}.mol2"
 FILE_PATTERN="${START_FILE}_*"
