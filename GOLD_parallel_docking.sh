@@ -2,13 +2,15 @@
 # Prepare the gold.config using the wizard
 # You need the dummy and the conformers in the same directory
 # Ligand file has to be in *_*.sdf format
+# In "GOLD_CONF_DIR" only these files are allowed: GOLD_parallel_docking.sh, gold.conf, split_sdf.py, "START_FILE".sdf
+# Make sure cavity_ligand and proteins are in a different folder so their path does not get changed 
 
 ### Assign variables ###
-START_FILE="monomer_ambinter"
-SPLIT_NUMBER=10 					#Amount of compounds on each core
-NUM_FOLDERS=9						#Amount of cores being used
-GOLD_CONF_DIR="/home/wout/test"
-GOLD_AUTO="/opt/CCDC/Discovery_2022/bin/gold_auto"
+START_FILE="CCR8_conformers"
+SPLIT_NUMBER=150 						#Amount of compounds on each core
+NUM_FOLDERS=60							#Amount of cores being used
+GOLD_CONF_DIR="/home/wout/PhD/CCR8/Dockings"			#Working directory
+GOLD_AUTO="/opt/CCDC/ccdc-software/gold/GOLD/bin/gold_auto"
 
 ### Variables that do not need to be changed ###
 GOLD_CONF_IN="${START_FILE}.sdf"
@@ -17,7 +19,7 @@ FILE_PATTERN="${START_FILE}_*"
 
 ### Splitting of .sdf file ###
 
-python split_sdf.py "$START_FILE" "$SPLIT_NUMBER" &
+python3 split_sdf.py "$START_FILE" "$SPLIT_NUMBER" &
 pid=$!
 wait $pid
 echo "Splitting completed"
